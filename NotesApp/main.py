@@ -1,6 +1,30 @@
 import json
 import datetime
 
+# Функция для создания новой заметки
+
+
+def create_note():
+    title = input("Введите заголовок заметки: ")
+    body = input("Введите тело заметки: ")
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    note = {
+        "id": len(notes) + 1,
+        "title": title,
+        "body": body,
+        "timestamp": timestamp,
+    }
+    notes.append(note)
+    save_notes()
+    print("Заметка успешно создана!")
+
+# Функция для сохранения заметок в файл JSON
+
+
+def save_notes():
+    with open("notes.json", "w") as file:
+        json.dump(notes, file)
+
 # Главная функция
 
 
